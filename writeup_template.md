@@ -149,3 +149,5 @@ Addition to above project video processing I have tested code for challange vide
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+
+    Although, Project pipeline works well with Project video, there was some issue with challange video like false detection of lane line, it is due to no. of parameter required to tune  if we only depend on computer vision method to detect lane line also the warp prespective points hard coaded, it need to be work out for adaptive approach depend on various road situation, based on the experience on working with above project pipeline, to implement robust Lane finding solution, if we integrate deep learning approach in combination with computer vision, it will give better result as well as avoid false lane detection.
