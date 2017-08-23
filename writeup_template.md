@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 [image3]: ./writeup_images/color_threshold.png "color threshold"
 [image4]: ./writeup_images/Gradient_Theshold.png "Gradient Theshold"
 [image5]: ./writeup_images/warp_Image.png "Warp Image"
-[image6]: ./examples/example_output.jpg "Output"
+[image6]: ./writeup_images/lane_Marking.png "Lane Marking"
 [video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -80,10 +80,10 @@ src = np.float32(
     [(0.5 * xLen) + (xLen*0.07), (2/3)*yLen], 
     [xLen-150, yLen]])
 dst = np.float32(
-[[0.15*xLen, yLen], 
-[0.15*xLen, 0], 
-[xLen-150, 0], 
-[xLen-150, yLen]])
+    [[0.15*xLen, yLen], 
+    [0.15*xLen, 0], 
+    [xLen-150, 0], 
+    [xLen-150, yLen]])
 ```
 
 This resulted in the following source and destination points:
@@ -101,14 +101,13 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Then with the help of sliding_win_search() function and find_lane() function located at cell 14 & 19 respectively, I have find and marked Lane line on image as shown in below image:
 
-![alt text][image5]
+![alt text][image6]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
-
+To calculate Lane curvature Radius I used below formula reffered from online tutorial as suggested in class lecture. [Radius of Curvature](http://www.intmath.com/applications-differentiation/8-radius-curvature.php)
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
