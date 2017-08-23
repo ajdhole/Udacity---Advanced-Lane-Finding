@@ -22,7 +22,7 @@ The goals / steps of this project are the following:
 [image2]: ./writeup_images/Test_Image_Calibration.png "Test Image Undistortion"
 [image3]: ./writeup_images/color_threshold.png "color threshold"
 [image4]: ./writeup_images/Gradient_Theshold.png "Gradient Theshold"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image5]: ./writeup_images/warp_Image.png "Warp Image"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -61,29 +61,29 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at cells # 4 and 6 # in `Advaned-Lane-Line-p4.ipynb`).  Here's an example of my output for this step. 
 
-Example of color thresholding:
+#### Example of color thresholding:
 
 ![alt text][image3]
 
-Example of Gradient thresholding:
+#### Example of Gradient thresholding:
 
 ![alt text][image4]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warp_images()`, which appears in cell 9 in the file `Advaned-Lane-Line-p4.ipynb`.  The `warp_images()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
 ```python
 src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
+    [[0.15*xLen, yLen], 
+    [(0.5 * xLen) - (xLen*0.07), (2/3)*yLen], 
+    [(0.5 * xLen) + (xLen*0.07), (2/3)*yLen], 
+    [xLen-150, yLen]])
 dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+[[0.15*xLen, yLen], 
+[0.15*xLen, 0], 
+[xLen-150, 0], 
+[xLen-150, yLen]])
 ```
 
 This resulted in the following source and destination points:
@@ -97,7 +97,7 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+![alt text][image5]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
