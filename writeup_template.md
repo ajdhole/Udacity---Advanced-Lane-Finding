@@ -136,7 +136,7 @@ Addition to above pipeline I have added Binary Image, Warp Image and Lane findin
 
 Please refer link to video output for project video.
 
-Here's a [link to my video result](image9)(./project_video_out.mp4)
+[![Project Video video](https://img.youtube.com/vi/fJlCvDVxyJo.jpg)](https://youtu.be/fJlCvDVxyJo)
 
 Addition to above project video processing I have tested code for challange video and result is shown in below video link:
 
